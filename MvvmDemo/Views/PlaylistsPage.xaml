@@ -3,7 +3,7 @@
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="Add" Clicked="OnAddPlaylist" />
 	</ContentPage.ToolbarItems>
-	<ListView x:Name="playlistsListView" ItemsSource="{Binding Playlists}" ItemSelected="OnPlaylistSelected">
+	<ListView x:Name="playlistsListView" SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}" ItemsSource="{Binding Playlists}" ItemSelected="OnPlaylistSelected">
 		<ListView.ItemTemplate>
 			<DataTemplate>
 				<TextCell Text="{Binding Title}" Detail="{Binding IsFavorite, StringFormat='Favorite: {0}'}" TextColor="{Binding Color}" />

@@ -34,15 +34,7 @@ namespace MvvmDemo
 
 		void OnPlaylistSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
 		{
-			if (e.SelectedItem == null)
-				return;
-
-			var playlist = e.SelectedItem as Playlist;
-			playlist.IsFavorite = !playlist.IsFavorite;
-
-			playlistsListView.SelectedItem = null;
-
-			//await Navigation.PushAsync (new PlaylistDetailPage(playlist));
+			(BindingContext as PlaylistsViewModel).SelectPlaylist(e.SelectedItem as Playlist);			
 		}
 	}
 }
