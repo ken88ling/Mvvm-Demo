@@ -26,9 +26,7 @@ namespace MvvmDemo
 
 		void OnAddPlaylist(object sender, System.EventArgs e)
 		{
-			var newPlaylist = "Playlist " + (_playlists.Count + 1);
-
-			_playlists.Add(new Playlist { Title = newPlaylist });
+			(BindingContext as PlaylistsViewModel).AddPlaylist();
 
 			// remove this count of title
 			//this.Title = $"Total {_playlists.Count} Playlists";
