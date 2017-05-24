@@ -8,16 +8,18 @@ namespace MvvmDemo
 
 	public partial class PlaylistsPage : ContentPage
 	{
-		private ObservableCollection<Playlist> _playlists = new ObservableCollection<Playlist>();
 
 		public PlaylistsPage()
 		{
+			BindingContext = new PlaylistsViewModel();
+
 			InitializeComponent();
 		}
 
 		protected override void OnAppearing()
 		{
-			playlistsListView.ItemsSource = _playlists;
+			// remove this line because use PlaylistsViewModel() binding to list already
+			//playlistsListView.ItemsSource = _playlists; 
 
 			base.OnAppearing();
 		}
@@ -28,7 +30,8 @@ namespace MvvmDemo
 
 			_playlists.Add(new Playlist { Title = newPlaylist });
 
-			this.Title = $"{_playlists.Count} Playlists";
+			// remove this count of title
+			//this.Title = $"Total {_playlists.Count} Playlists";
 		}
 
 		void OnPlaylistSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
