@@ -5,9 +5,8 @@ using Xamarin.Forms;
 
 namespace MvvmDemo
 {
-	public class Playlist : INotifyPropertyChanged
+	public class Playlist : BaseViewModel
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
 
 		public string Title { get; set; }
 
@@ -23,6 +22,7 @@ namespace MvvmDemo
 				_isFavorite = value;
 
 				OnPropertyChanged();
+
 				OnPropertyChanged(nameof(Color));
 			}
 		}
@@ -30,11 +30,6 @@ namespace MvvmDemo
 		public Color Color
 		{
 			get { return IsFavorite ? Color.Pink : Color.Black; }
-		}
-
-		private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

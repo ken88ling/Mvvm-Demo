@@ -3,10 +3,27 @@ using System.Collections.ObjectModel;
 
 namespace MvvmDemo
 {
-	public class PlaylistsViewModel
+	public class PlaylistsViewModel : BaseViewModel
 	{
 		public ObservableCollection<Playlist> Playlists { get; private set; } = new ObservableCollection<Playlist>();
-		public Playlist SelectedPlaylist { get; set; } //binding in xaml 
+
+		private Playlist _SelectedPlaylist;
+		public Playlist SelectedPlaylist
+		{
+			get
+			{
+				return _SelectedPlaylist;
+			}
+			set
+			{
+				if (_SelectedPlaylist == null)
+					return;
+
+				_SelectedPlaylist = value;
+
+				OnPropertyChanged();
+			}
+		}
 
 		public void AddPlaylist()
 		{
